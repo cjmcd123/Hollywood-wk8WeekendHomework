@@ -20,6 +20,7 @@ public class FilmTest {
         director = new Director("Scott Derrickson", 51);
         director2 = new Director("Something else", 51);
         film = new Film("Doctor Strange", 2016, FilmGenre.ACTION, studio, director, 10000);
+        actor = new Actor("Benedict Cumberbatch", 41, 1000);
     }
 
     @Test
@@ -93,11 +94,28 @@ public class FilmTest {
         assertEquals(0, film.getActors().size());
     }
 
-//    @Test
-//    public void addMovie(){
-//        actor.addFilm(movie);
-//        assertEquals(1, actor.getFilms().size());
-//    }
+    @Test
+    public void addActor(){
+        film.addActor(actor);
+        assertEquals(1, film.getActors().size());
+    }
 //    commented out undtil movie class created
 
+    @Test
+    public void payActor(){
+        film.addActor(actor);
+        film.payActors();
+        assertEquals(9000, film.getBudget());
+        assertEquals(1000, actor.getMoney());
+    }
+
+    @Test
+    public void payAllActors(){
+        film.addActor(actor);
+        Actor actor1 = new Actor("Benedict ", 41, 1000);
+        film.addActor(actor1);
+        film.payActors();
+        assertEquals(8000, film.getBudget());
+        assertEquals(1000, actor.getMoney());
+    }
 }

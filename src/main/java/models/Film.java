@@ -110,4 +110,18 @@ public class Film {
     public void setActors(List<Actor> actors) {
         this.actors = actors;
     }
+
+    public void addActor(Actor actor) {
+        this.actors.add(actor);
+    }
+
+    public void payActors() {
+        for (Actor actor : actors){
+            int price = actor.getPrice();
+            int budget = this.getBudget();
+            int money = actor.getMoney();
+            setBudget(budget - price);
+            actor.setMoney(money + price);
+        }
+    }
 }
