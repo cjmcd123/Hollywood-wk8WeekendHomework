@@ -42,9 +42,9 @@ public class DirectorTest {
 
 //    @Test
 //    public void addMovie(){
-//        actor.addFilm(movie);
-//        assertEquals(1, actor.getFilms().size());
+//        director.addFilm(movie);
+//        assertEquals(1, director.getFilms().size());
 //    }
-//    commented out undtil movie class created
+//    commented out until movie class created
 
 }

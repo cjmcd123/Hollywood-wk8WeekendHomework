@@ -40,11 +40,7 @@ public class Director {
         return age;
     }
 
-    @ManyToMany
-    @JoinTable(name = "director_film",
-            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "director_id", nullable = false, updatable = false)})
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(mappedBy="director", fetch = FetchType.LAZY)
     public List<Film> getFilms() {
         return films;
     }

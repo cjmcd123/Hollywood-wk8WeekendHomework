@@ -33,11 +33,7 @@ public class Studio {
         return name;
     }
 
-    @ManyToMany
-    @JoinTable(name = "studio_film",
-            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "studio_id", nullable = false, updatable = false)})
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(mappedBy="studio", fetch = FetchType.LAZY)
     public List<Film> getFilms() {
         return films;
     }
