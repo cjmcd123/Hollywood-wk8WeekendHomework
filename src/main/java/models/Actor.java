@@ -58,8 +58,8 @@ public class Actor {
 
     @ManyToMany
     @JoinTable(name = "actor_film",
-            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)})
+            joinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)})
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     public List<Film> getFilms() {
         return films;
@@ -85,7 +85,11 @@ public class Actor {
         this.money = money;
     }
 
-    public void addFilms(Film film) {
+    public void setFilms(List<Film> films) {
+        this.films = films;
+    }
+
+    public void addFilm(Film film) {
         this.films.add(film);
     }
 }

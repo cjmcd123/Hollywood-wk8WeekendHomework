@@ -1,4 +1,4 @@
-import models.Actor;
+import models.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -64,11 +64,14 @@ public class ActorTest {
         assertEquals(0, actor.getFilms().size());
     }
 
-//    @Test
-//    public void addMovie(){
-//        actor.addFilm(movie);
-//        assertEquals(1, actor.getFilms().size());
-//    }
-//    commented out undtil movie class created
+    @Test
+    public void addMovie(){
+        Studio studio = new Studio("Marvel Studio");
+        Director director = new Director("Scott Derrickson", 51);
+        Film film = new Film("Doctor Strange", 2016, FilmGenre.ACTION, studio, director, 10000);
+        actor.addFilm(film);
+        assertEquals(1, actor.getFilms().size());
+    }
+//    commented out until movie class created
 
 }
