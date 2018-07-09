@@ -23,6 +23,7 @@ public class DBFilm {
 
         try {
             Criteria cr = session.createCriteria(Director.class);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             cr.add(Restrictions.eq("id", film.getDirector().getId()));
             director = (Director) cr.uniqueResult();
         } catch (HibernateException e) {
@@ -42,6 +43,7 @@ public class DBFilm {
 
         try {
             Criteria cr = session.createCriteria(Studio.class);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             cr.add(Restrictions.eq("id", film.getStudio().getId()));
             studio = (Studio) cr.uniqueResult();
         } catch (HibernateException e) {
@@ -60,6 +62,7 @@ public class DBFilm {
         List<Actor> results = null;
         try {
             Criteria cr = session.createCriteria(Actor.class);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             cr.createAlias("films", "film");
             cr.add(Restrictions.eq("film.id", film.getId()));
             results = cr.list();
@@ -78,5 +81,11 @@ public class DBFilm {
         actor.addFilm(film);
         DBHelper.update(film);
 
+    }
+
+    public static void payAllActors(Film film){
+       List<Actor> actors = DBFilm.filmActors(film);
+       film.payAllActors(actors);
+       DBHelper.update(film);
     }
 }

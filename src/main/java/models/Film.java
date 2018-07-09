@@ -126,4 +126,14 @@ public class Film {
             actor.setMoney(money + price);
         }
     }
+
+    public void payAllActors(List<Actor> actors) {
+        for (Actor actor : actors){
+            int price = actor.getPrice();
+            int budget = this.getBudget();
+            int money = actor.getMoney();
+            setBudget(budget - price);
+            actor.setMoney(money + price);
+        }
+    }
 }

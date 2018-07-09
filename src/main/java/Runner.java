@@ -65,6 +65,10 @@ public class Runner {
         List<Film> actorFilms = DBActor.actorFilms(actor1);
         List<Film> actorFilmsByGenre = DBActor.filmGenre(actor1, FilmGenre.COMEDY);
         int genreCount = DBActor.genreCount(actor1, FilmGenre.COMEDY);
+
+        DBFilm.payAllActors(film);
+        List<Actor> filmAllActors = DBFilm.filmActors(film);
+        Film filmpaid = DBHelper.find(Film.class, 1);
     }
 
 }

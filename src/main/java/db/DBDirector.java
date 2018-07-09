@@ -20,6 +20,7 @@ public class DBDirector {
 
         try {
             Criteria cr = session.createCriteria(Film.class);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             cr.add(Restrictions.eq("director", director));
             results = cr.list();
         } catch (HibernateException e) {

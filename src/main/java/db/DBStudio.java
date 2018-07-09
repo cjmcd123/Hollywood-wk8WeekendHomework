@@ -20,6 +20,7 @@ public class DBStudio {
 
         try {
             Criteria cr = session.createCriteria(Film.class);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             cr.add(Restrictions.eq("studio", studio));
             results = cr.list();
         } catch (HibernateException e) {

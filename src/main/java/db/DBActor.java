@@ -23,6 +23,7 @@ public class DBActor {
 
         try {
             Criteria cr = session.createCriteria(Film.class);
+            cr.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
             cr.createAlias("actors", "actor");
             cr.add(Restrictions.eq("actor.id", actor.getId()));
             results = cr.list();
